@@ -1,9 +1,9 @@
 {
   "$schema": "https://mirrorneuron.io/schemas/blueprint/v1/extensions/ui.schema.json",
   "starter_questions": [
-    "What is your mission?",
-    "What requires my approval?",
-    "How do you collaborate with your marketing co-worker?"
+    "What evidence will support a campaign idea?",
+    "What does approving an idea allow?",
+    "How do I connect the executor?"
   ],
   "init_config_review": {
     "required": true,
@@ -59,7 +59,7 @@
   },
   "setup_guide": {
     "schema": "otterdesk.setup_guide.v1",
-    "introduction": "Studies Bibblio and proposes evidence-backed email campaigns for your approval.",
+    "introduction": "I'll turn public product evidence into campaign ideas for your review. Confirm the website and marketing goal, then use Collaboration to connect your co-workers. Approving an idea allows a handoff; each email still needs its own review.",
     "sample": {
       "available": false
     },
@@ -115,6 +115,7 @@
         "required": false,
         "default": []
       }
-    ]
+    ],
+    "prompt_file": "@/payloads/prompts/setup.md"
   }
 }
