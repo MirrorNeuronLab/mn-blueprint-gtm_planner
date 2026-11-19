@@ -4,7 +4,7 @@
   "name": "GTM planner",
   "tagline": "Plan evidence-backed email campaigns for review",
   "payload_api": "mn.blueprint.v1",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Studies Bibblio and proposes evidence-backed email campaigns for your approval.",
   "workflow": "workflow.json",
   "execution": "execution.json",

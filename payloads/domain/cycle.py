@@ -4,7 +4,7 @@ import json
 import time
 from pathlib import Path
 from mn_sdk.blueprint.context import WorkflowStateStore
-from .research import study
+from .research import public_citation, study
 from .model import generate
 from .approval import approval
 from .collaboration import peer_updates, publish
@@ -63,4 +63,5 @@ def cycle(context, stop_event):
             publish(context,'brief-'+identity,'approved_brief',{'brief':brief},'A human-reviewed campaign idea is ready for drafting. Final email approval remains required.')
         if status == 'pending': pending += 1
     store.write('planner.json',state)
-    return {'status':'running','peer':peer_status,'pending_ideas':pending,'website_checked_at':research['checked_at']}
+    return {'status':'stopped' if stop_event.is_set() else 'running','peer':peer_status,'pending_ideas':pending,'website_checked_at':research['checked_at'],
+            'public_facts': [{'claim': fact['claim'], 'source_url': public_citation(fact['source_url'])} for fact in research['facts']]}

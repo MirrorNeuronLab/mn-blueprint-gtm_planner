@@ -5,6 +5,14 @@ from mn_web_browser_skill import WebBrowserConfig, browse
 from .model import generate
 
 
+def public_citation(url):
+    parts = urlsplit(url)
+    if parts.scheme != 'https' or parts.hostname not in {'bibblio.app', 'www.bibblio.app'}:
+        return 'Public website reference unavailable'
+    citation = 'https://' + parts.hostname + parts.path
+    return citation + ' (query omitted)' if parts.query else citation
+
+
 def study(context, *, browser=browse, model=generate):
     url = context['payload']['website_url']
     parts = urlsplit(url)

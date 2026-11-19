@@ -1,5 +1,12 @@
 {
   "$schema": "https://mirrorneuron.io/schemas/blueprint/v1/extensions/ui.schema.json",
+  "web_ui": {
+    "enabled": true,
+    "adapter": "static_html",
+    "kind": "output",
+    "title": "Campaign planning report",
+    "description": "Inspect the latest saved cycle, public source quotations and ideas awaiting review."
+  },
   "starter_questions": [
     "What evidence will support a campaign idea?",
     "What does approving an idea allow?",
@@ -59,7 +66,7 @@
   },
   "setup_guide": {
     "schema": "otterdesk.setup_guide.v1",
-    "introduction": "I'll turn public product evidence into campaign ideas for your review. Confirm the website and marketing goal, then use Collaboration to connect your co-workers. Approving an idea allows a handoff; each email still needs its own review.",
+    "introduction": "Start with the product website and the marketing goal. I’ll use public product evidence to draft one campaign idea for your review. You can connect the executor in Collaboration when you’re ready for a handoff.",
     "sample": {
       "available": false
     },
@@ -116,6 +123,11 @@
         "default": []
       }
     ],
-    "prompt_file": "@/payloads/prompts/setup.md"
+    "prompt_file": "@/payloads/prompts/setup.md",
+    "run_guidance": {
+      "on_start": "I’ll check the public product sources so you can review the evidence behind a proposed campaign idea.",
+      "output_ready": "Open the saved marketing status to check which ideas still need review.",
+      "web_ui_ready": "Open the planning report and check the dated quotations behind the latest cycle."
+    }
   }
 }
